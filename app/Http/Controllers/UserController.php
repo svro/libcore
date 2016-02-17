@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 
 use Eduweb2\Libcore\User;
 
+
 class UserController extends Controller
 {
     /**
@@ -16,10 +17,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
-        //dd($users[0]);
-        // load the view and pass the users
-        return view('index')->with("users",$users);
+        return response()->json(User::orderBy('achternaam')->orderBy('voornaam')->get());
     }
 
     /**
@@ -29,7 +27,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('users.create');
     }
 
     /**
@@ -40,7 +38,13 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $nerd = new User();
+        $nerd->voornaam       = $request->input('voornaam');
+        $nerd->achternaam   = $request->input('achternaam');
+        $nerd->save();
+
+        // redirect
+        return response()->json(array('success' => true));
     }
 
     /**
@@ -51,7 +55,12 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        // get the nerd
+        $user = User::find($id);
+
+        // show the view and pass the nerd to it
+        return view('users.show')
+            ->with('user', $user);
     }
 
     /**
@@ -85,6 +94,8 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        User::destroy($id);
+
+        return response()->json(array('success' => true));
     }
 }

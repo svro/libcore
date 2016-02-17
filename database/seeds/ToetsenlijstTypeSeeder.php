@@ -3,9 +3,9 @@
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 
-use Eduweb2\Libcore\Toetsenlijsttype;
+use Eduweb2\Libcore\ToetsenlijstType;
 
-class ToetsenlijsttypeSeeder extends Seeder
+class ToetsenlijstTypeSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -22,7 +22,7 @@ class ToetsenlijsttypeSeeder extends Seeder
             array('code' => 'DW','naam' => 'Dagelijks Werk'),
             array('code' => 'EX','naam' => 'Examen')
         );
-        $toetsenlijsttypes = factory(Toetsenlijsttype::class, count($arr))->create();
+        $toetsenlijsttypes = factory(ToetsenlijstType::class, count($arr))->create();
         for ($i = 0; $i < count($toetsenlijsttypes);++$i) {
             $toetsenlijsttypes[$i]["code"]=$arr[$i]["code"];
             $toetsenlijsttypes[$i]["naam"]=$arr[$i]["naam"];

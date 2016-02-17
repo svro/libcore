@@ -27,6 +27,8 @@ class CijferSeeder extends Seeder
         //$cijfers = factory(Cijfer::class, count($toetsen)*count($leerlingen))->create();
         for ($i = 0; $i < count($toetsen);++$i) {
             //dd($toetsen[$i]->toetsenlijst()->first()->lesopdracht()->first()->klas()->first()->leerlingen()->first());
+            $klas = $toetsen[$i]->toetsenlijst()->first()->lesopdracht()->first()->klas()->first()->code;
+            if (substr($klas,0,1)!='5') continue;
             $leerlingen = $toetsen[$i]->toetsenlijst()->first()->lesopdracht()->first()->klas()->first()->leerlingen()->get();
             for ($j=0;$j<count($leerlingen);++$j) {
                 $cijfer = factory(Cijfer::class, 1)->create();
@@ -37,6 +39,8 @@ class CijferSeeder extends Seeder
             }
         }
         DB::statement('SET FOREIGN_KEY_CHECKS = 1');
+
+
         Model::reguard();
     }
 }

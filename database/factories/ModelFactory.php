@@ -18,11 +18,16 @@ use Eduweb2\Libcore\Leerling;
 use Eduweb2\Libcore\Leerkracht;
 use Eduweb2\Libcore\Vak;
 use Eduweb2\Libcore\Lesopdracht;
-use Eduweb2\Libcore\Toetsenlijsttype;
+use Eduweb2\Libcore\ToetsenlijstType;
 use Eduweb2\Libcore\Toetsenlijst;
 use Eduweb2\Libcore\Toets;
 use Eduweb2\Libcore\Cijfer;
 use Eduweb2\Libcore\Periode;
+use Eduweb2\Libcore\LockerType;
+use Eduweb2\Libcore\Locker;
+use Eduweb2\Libcore\LockerSleutelVerloren;
+use Eduweb2\Libcore\LockerGewenst;
+
 
 $factory->define(User::class, function (Faker\Generator $faker) {
     return [
@@ -112,3 +117,34 @@ $factory->define(Periode::class, function (Faker\Generator $faker) {
         'gewicht' => 100
     ];
 });
+
+$factory->define(\Eduweb2\Libcore\LockerType::class, function (Faker\Generator $faker) {
+    return [
+        'naam' => 'Gewone locker',
+        'jaren' => '1,2,3,4,5,6'
+    ];
+});
+
+$factory->define(\Eduweb2\Libcore\Locker::class, function (Faker\Generator $faker) {
+    return [
+        'code' => 'A001',
+        'locker_type_id' => '1',
+        'leerling_id' => NULL
+    ];
+});
+
+
+$factory->define(\Eduweb2\Libcore\LockerGewenst::class, function (Faker\Generator $faker) {
+    return [
+        'leerling_id' => '1'
+    ];
+});
+
+$factory->define(\Eduweb2\Libcore\LockerSleutelVerloren::class, function (Faker\Generator $faker) {
+    return [
+        'locker_id' => '1',
+        'leerling_id' => '1',
+        'datum' => $faker->dateTimeThisMonth()->format('Y-m-d')
+    ];
+});
+

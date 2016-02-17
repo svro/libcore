@@ -1,5 +1,7 @@
 <?php
 
+// verplaats naar package en gebruik package
+
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
@@ -206,6 +208,8 @@ class CreateTables extends Migration
                 ->references('id')->on('toetsenlijsttype')
                 ->onDelete('cascade');
         });
+
+
     }
 
     /**
@@ -215,6 +219,8 @@ class CreateTables extends Migration
      */
     public function down()
     {
+
+        /*
         Schema::table('klas', function ($table) {
             $table->dropForeign('klas_richting_id_foreign');
         });
@@ -256,7 +262,10 @@ class CreateTables extends Migration
             $table->dropForeign('periode_toetsenlijst_periode_id_foreign');
             $table->dropForeign('periode_toetsenlijst_toetsenlijst_id_foreign');
         });
+        */
 
+
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
         Schema::drop('richting');
         Schema::drop('klas');
         Schema::drop('user');
@@ -273,5 +282,7 @@ class CreateTables extends Migration
         Schema::drop('periode');
         Schema::drop('trimverhouding');
         Schema::drop('periode_toetsenlijst');
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
+
     }
 }

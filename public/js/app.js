@@ -1,0 +1,1 @@
+var app = angular.module('app', ['ngResource','lockerCtrl', 'leerlingService','lockerGewenstService','lockerTypeService','lockerService']);

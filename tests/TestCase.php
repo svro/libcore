@@ -22,4 +22,11 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase
 
         return $app;
     }
+
+    public function testSum() {
+        $a=1;
+        $b=2;
+        $result=$a+$b;
+        $this->assertEquals(3,$result);
+    }
 }

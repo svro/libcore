@@ -15,4 +15,24 @@
     return view('master');
 });*/
 
-Route::resource('users', 'UserController');
+//Route::resource('users', 'UserController');
+
+Route::get('/', function() {
+    return view('lockers/index');
+});
+
+// API ROUTES ==================================
+Route::group(array('prefix' => 'api'), function() {
+    Route::resource('users', 'UserController');
+    Route::get('leerlingen/indexcustom', 'LeerlingController@indexCustom');
+    Route::resource('leerlingen', 'LeerlingController');
+    Route::resource('klassen', 'KlasController');
+    Route::get('lockersgewenst/indexcustom', 'LockerGewenstController@indexCustom');
+    Route::resource('lockersgewenst', 'LockerGewenstController');
+    Route::resource('lockertypes', 'LockerTypeController');
+
+    Route::get('lockers/indexcustom', 'LockerController@indexCustom');
+    Route::get('lockers/storebatch', 'LockerController@storeBatch');
+    Route::resource('lockers', 'LockerController');
+});
+

@@ -17,14 +17,18 @@ class DatabaseSeeder extends Seeder
         $this->call(RichtingSeeder::class);
         $this->call(KlasSeeder::class);
         $this->call(LeerlingSeeder::class);
-        $this->call(LeerkrachtSeeder::class);
+        /*$this->call(LeerkrachtSeeder::class);
         $this->call(VakSeeder::class);
         $this->call(LesopdrachtSeeder::class);
         $this->call(PeriodeSeeder::class);
-        $this->call(ToetsenlijsttypeSeeder::class);
+        $this->call(ToetsenlijstTypeSeeder::class);
         $this->call(ToetsenlijstSeeder::class);
         $this->call(ToetsSeeder::class);
-        $this->call(CijferSeeder::class);
+        $this->call(CijferSeeder::class);*/
+        $this->call(LockerTypeSeeder::class);
+        $this->call(LockerSeeder::class);
+        $this->call(LockerGewenstSeeder::class);
+        $this->call(LockerSleutelVerlorenSeeder::class);
         Model::reguard();
     }
 }

@@ -5,6 +5,8 @@ use Illuminate\Database\Eloquent\Model;
 use Eduweb2\Libcore\Toetsenlijsttype;
 use Eduweb2\Libcore\Lesopdracht;
 use Eduweb2\Libcore\Periode;
+use Eduweb2\Libcore\Toets;
+
 
 class Toetsenlijst extends Model
 {
@@ -25,5 +27,9 @@ class Toetsenlijst extends Model
 
     public function periodes() {
         return $this->belongsToMany('Eduweb2\Libcore\Periode', 'periode_toetsenlijst')->withTimestamps();
+    }
+
+    public function toetsen() {
+        return $this->hasMany('Eduweb2\Libcore\Toets');
     }
 }

@@ -13,6 +13,7 @@ class CreateTables extends Migration
      */
     public function up()
     {
+        /*
         Schema::create('user', function (Blueprint $table) {
             $table->increments('id');
             $table->string("voornaam");
@@ -96,7 +97,7 @@ class CreateTables extends Migration
             $table->foreign('lesopdracht_id')
                 ->references('id')->on('lesopdracht')
                 ->onDelete('cascade');
-        });
+        });*/
     }
 
     /**
@@ -105,7 +106,7 @@ class CreateTables extends Migration
      * @return void
      */
     public function down()
-    {
+    {/*
         Schema::table('klas', function ($table) {
             $table->dropForeign('klas_richting_id_foreign');
         });
@@ -131,6 +132,6 @@ class CreateTables extends Migration
         Schema::drop('vak');
         Schema::drop('lesopdracht');
         Schema::drop('leerkracht');
-        Schema::drop('leerkracht_lesopdracht');
+        Schema::drop('leerkracht_lesopdracht');*/
     }
 }
